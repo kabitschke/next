@@ -4,7 +4,7 @@ type Produto = {
   preco: number;
   descricao: string;
   estoque: number;
-  importado: boolean;
+  importado: number;
 }
 
 export default async function SeverFetch() {
