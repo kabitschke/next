@@ -10,7 +10,7 @@ type Produto = {
 export default async function SeverFetch() {
   const response = await fetch('https://api.origamid.online/produtos');
   const data = await response.json() as Produto[]; {/*as typeSCRIPT INDICA que data é um array de produto */ }
-  console.log(data);
+  
 
   return (
     <div className="">
