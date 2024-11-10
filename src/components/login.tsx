@@ -1,27 +1,67 @@
-'use client';
+"use client"
+
+import React from "react";
 
 export default function Login() {
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const username = event.currentTarget.username.value;
-    const password = event.currentTarget.password.value;
+
+  const [username, setUserName] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [message, setMessage] = React.useState('');
+
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // const username = e.currentTarget.username.value;
+    // const password = e.currentTarget.username.value;
+
     const response = await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
-    });
-    if (response.ok) window.location.href = '/';
-  }
+      body: JSON.stringify({ username, password })
+    })
+
+    if (response.ok) {
+      window.location.href = '/';
+
+    } else {
+      setMessage('Falha ao Logar...');
+    }
+
+
+
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Usuário</label>
-      <input type="text" id="username" name="username" />
-      <label htmlFor="password">Senha</label>
-      <input type="password" id="password" name="password" />
-      <button>Login</button>
-    </form>
+    <div>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">User name:</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          value={username}
+          onChange={e => setUserName(e.target.value)}
+
+        />
+
+        <label htmlFor="password">Password:</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+
+        />
+
+        <p style={{ color: 'red' }}>{message}</p>
+        <button type="submit">Login</button>
+      </form>
+
+    </div>
   );
+
 }
