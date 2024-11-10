@@ -7,11 +7,11 @@ type Props = {
     }
 }
 
-export default async function  CursosPage ({params}:Props) {
-   
+export default async function CursosPage({ params }: Props) {
+
     const curso = await getCurso(params.curso);
 
-   
+
     return (
         <div>
             <h1>{curso.nome}</h1>
@@ -21,13 +21,13 @@ export default async function  CursosPage ({params}:Props) {
 
             <h2>Aulas</h2>
 
-            {curso.aulas.map((aula) => 
+            {curso.aulas.map((aula) =>
                 <ul>
                     <li key={aula.id}><Link href={`/cursos/${params.curso}/${aula.slug}`}>{aula.nome}</Link></li>
                 </ul>
             )}
 
-      
+
         </div>
     )
 }
