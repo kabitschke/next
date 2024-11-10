@@ -21,7 +21,8 @@ export async function POST(request: NextRequest) {
   }
 
   const data = await response.json();
-  (await cookies()).set('Token', data.token, {
+  // salva o cookie
+  (await cookies()).set('token', data.token, {
     httpOnly: true,
     secure: true
   });

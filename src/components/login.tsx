@@ -15,6 +15,7 @@ export default function Login() {
     // const password = e.currentTarget.username.value;
 
     const response = await fetch('/api/login', {
+      // envia os dados para rota api/login
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
