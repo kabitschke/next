@@ -1,9 +1,8 @@
 "use client"
-
-import { login } from "@/actions/login";
 import React from "react";
 
-export default function Login() {
+
+export default function LoginHandlers() {
 
   const [username, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -15,23 +14,23 @@ export default function Login() {
     // const username = e.currentTarget.username.value;
     // const password = e.currentTarget.username.value;
 
-    // const response = await fetch('/api/login', {
-    //   // envia os dados para rota api/login
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ username, password })
-    // })
+    const response = await fetch('/api/login', {
+      // envia os dados para rota api/login
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password })
+    })
 
-    // if (response.ok) {
-    //   window.location.href = '/';
+    if (response.ok) {
+      window.location.href = '/';
 
-    // } else {
-    //   setMessage('Falha ao Logar...');
-    // }
+    } else {
+      setMessage('Falha ao Logar...');
+    }
 
-    const response = await login(username, password);
+
 
   };
 
@@ -64,6 +63,8 @@ export default function Login() {
       </form>
 
     </div>
+
   );
 
 }
+

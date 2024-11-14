@@ -30,7 +30,11 @@ export default async function Menu() {
   return (
     <ul className="menu">
       <li><Link href={`/`}>Home</Link></li>
-      <li><Link href={`/login`}>Login</Link></li>
+      <li><Link href={`/products`}>Listar Produto</Link></li>
+      <li><Link href={`/products/add`}>Adicionar Produto</Link></li>
+
+
+
       {/* <li><Link href={`/sobre`}>Sobre</Link></li>
       <li><Link href={`/contato`}>Contato</Link></li>
       <li><Link href={`/imc`}>IMC</Link></li>

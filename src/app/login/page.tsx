@@ -1,4 +1,5 @@
-import Login from "@/components/login";
+import LoginServer from "@/components/login-server-action";
+import LoginHandlers from "@/components/longin-handlers";
 
 export default function LoginPage() {
 
@@ -7,7 +8,7 @@ export default function LoginPage() {
       <h1>Login</h1>
 
 
-      <Login />
+      <LoginHandlers />
     </div>
   );
 

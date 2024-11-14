@@ -1,15 +1,33 @@
+import AtualizarPage from "@/components/atualizar";
+
+type Acao = {
+  nome: string;
+  preco: number;
+  atualizada: string;
+
+}
+
 export default async function AcoesPage() {
 
-  const response = await fetch('https://api.origamid.online/acoes/lua');
-  const acao = (await response.json()) as {
-    simbolo: string;
-    atualizada: string;
-  };
-  return (
-    <div>
-      <h1>{acao.simbolo}</h1>
-      <h2>{acao.atualizada}</h2>
+  const response = await fetch('https://api.origamid.online/acoes/lua', {
+    //cache: 'no-store',
+    next: {
+      //revalidate: 0,
+      tags: ['acoes'],
+    }
 
-    </div>
+  });
+
+  const acao = await response.json() as Acao;
+
+
+  return (
+    <main>
+      <h1>Ações</h1>
+      <AtualizarPage />
+      <h2>Nome: {acao.nome}</h2>
+      <p>Preço: {acao.preco}</p>
+      <p>Atualizada: {acao.atualizada}</p>
+    </main>
   );
 }

@@ -1,8 +1,8 @@
 'use client'
 
-import { login } from "@/actions/login";
 import Cookie from "@/components/cookie";
-import Login from "@/components/login";
+import LoginServer from "@/components/login-server-action";
+
 import React from "react";
 
 export default function HomePage() {
@@ -11,8 +11,7 @@ export default function HomePage() {
 
     <main >
       <h1>Home</h1>
-      <Cookie />
-      <Login />
+
 
 
 
